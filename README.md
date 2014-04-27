@@ -39,6 +39,8 @@ Basic Hipache configuration is described in a json file. For example:
     {
         "server": {
             "accessLog": "/var/log/hipache_access.log",
+            "loggerModule": '/path/to/logger/js',
+            "logger": {},
             "port": 80,
             "workers": 5,
             "maxSockets": 100,
@@ -55,6 +57,9 @@ Basic Hipache configuration is described in a json file. For example:
 
 * __server.accessLog__: location of the Access logs, the format is the same as
 nginx
+* __server.loggerModule__: if present overrides the accessLog directive. Must be a path to a node module that implements a custom logger.
+see test/configs/my_logger.js for an example.
+* __server.logger__: additional config to pass to the custom logger
 * __server.port__: Port to listen to (HTTP)
 * __server.workers__: Number of workers to be spawned (specify at least 1, the
 master process does not serve any request)
